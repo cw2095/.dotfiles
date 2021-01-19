@@ -11,3 +11,4 @@
     ~/.zlogin: zsh/zlogin
     ~/.zimrc: zsh/zimrc
     ~/.zim/zimfw.zsh: zim/zimfw.zsh
+    ~/.gitconfig: gitconfig
