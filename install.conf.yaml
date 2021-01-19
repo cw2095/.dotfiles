@@ -6,8 +6,8 @@
 - clean: ['~', '~/.config']
 
 - link:
-    ~/.zshenv: zshenv
-    ~/.zshrc: zshrc
-    ~/.zlogin: zlogin
-    ~/.zimrc: zimrc
+    ~/.zshenv: zsh/zshenv
+    ~/.zshrc: zsh/zshrc
+    ~/.zlogin: zsh/zlogin
+    ~/.zimrc: zsh/zimrc
     ~/.zim/zimfw.zsh: zim/zimfw.zsh
