@@ -12,3 +12,4 @@
     ~/.zimrc: zsh/zimrc
     ~/.zim/zimfw.zsh: zim/zimfw.zsh
     ~/.gitconfig: gitconfig
+    ~/.gitignore_global : gitignore_global
