@@ -13,6 +13,10 @@ fi
 # -----------------
 # Zsh configuration
 # -----------------
+source ~/.dotfiles/zsh/env.zsh
+source ~/.dotfiles/zsh/aliases.zsh
+source ~/.dotfiles/zsh/keymap.zsh
+source ~/.dotfiles/zsh/fzf.zsh
 
 #
 # History
