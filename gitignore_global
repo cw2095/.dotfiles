@@ -7,6 +7,10 @@
 *.so
 *.pyc
 
+*.bak
+*.orig
+*.ORIG
+
 # Editing tools and IDEs #
 ##########################
 [._]*.sw[a-p]

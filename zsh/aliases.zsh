@@ -35,6 +35,7 @@ alias dud='du -ch -d 1'
 
 alias findd='find . -type d -name '
 alias findf='find . -type f -name '
+alias fd=fdfind
 
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
