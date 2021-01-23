@@ -12,4 +12,6 @@
     ~/.zimrc: zsh/zimrc
     ~/.zim/zimfw.zsh: zim/zimfw.zsh
     ~/.gitconfig: gitconfig
-    ~/.gitignore_global : gitignore_global
+    ~/.gitignore_global: gitignore_global
+    ~/.config/alacritty/alacritty.yml: alacritty.yml
+    ~/.config/nvim: ~/GitHub/vime
