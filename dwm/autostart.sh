@@ -1,6 +1,7 @@
 #!/bin/bash
 
 dwmblocks &
+/bin/bash /home/cw/.dotfiles/dwm/wp_autochange.sh &
 
 # mailsync &
 # chk.packages.sh &
