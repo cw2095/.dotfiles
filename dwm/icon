@@ -12,6 +12,7 @@
 #export ICON_DAT=⏲
 
 # nerdfont
+# ℃
 export ICON_RCD='辶'
 export ICON_MSC=''
 export ICON_MTD='ﱝ '
