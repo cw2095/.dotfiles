@@ -1,95 +1,49 @@
-# Start configuration added by Zim install {{{
-#
-# User configuration sourced by interactive shells
-#
+# Zsh 配置文件加载顺序
+# zsh 启动过程中会依次读取以下文件：
+# 1. /etc/zshenv
+# 2. ZDOTDIR/.zshenv（ZDOTDIR 未设置时默认为 $HOME）
+# 3. 如果是 login shell，读取 /etc/zprofile, $ZDOTDIR/.zprofile
+# 4. 如果是 interactive shell，读取 /etc/zshrc, $ZDOTDIR/.zshrc
+# 5. 如果是 login shell，读取 /etc/zlogin, $ZDOTDIR/.zlogin
+# +--------------+-------------+-------------+-----------------+-----------------+
+# |              |    login    |  non-login  |      login      |    non-login    |
+# |              | interactive | interactive | non-interactive | non-interactive |
+# +--------------+-------------+-------------+-----------------+-----------------+
+# |/etc/zshenv   |     A       |      A      |        A        |        A        |
+# +--------------+-------------+-------------+-----------------+-----------------+
+# |~/.zshenv     |     B       |      B      |        B        |        B        |
+# +--------------+-------------+-------------+-----------------+-----------------+
+# |/etc/zprofile |     C       |             |        C        |                 |
+# +--------------+-------------+-------------+-----------------+-----------------+
+# |~/.zprofile   |     D       |             |        D        |                 |
+# +--------------+-------------+-------------+-----------------+-----------------+
+# |/etc/zshrc    |     E       |      C      |                 |                 |
+# +--------------+-------------+-------------+-----------------+-----------------+
+# |~/.zshrc      |     F       |      D      |                 |                 |
+# +--------------+-------------+-------------+-----------------+-----------------+
+# |/etc/zlogin   |     G       |             |        E        |                 |
+# +--------------+-------------+-------------+-----------------+-----------------+
+# |~/.zlogin     |     H       |             |        F        |                 |
+# +--------------+-------------+-------------+-----------------+-----------------+
+# |              |             |             |                 |                 |
+# +--------------+-------------+-------------+-----------------+-----------------+
+# |              |             |             |                 |                 |
+# +--------------+-------------+-------------+-----------------+-----------------+
+# |~/.zlogout    |     I       |             |        G        |                 |
+# +--------------+-------------+-------------+-----------------+-----------------+
+# |/etc/zlogout  |     J       |             |        H        |                 |
+# +--------------+-------------+-------------+-----------------+-----------------+
 
 # -----------------
 # Zsh configuration
 # -----------------
-source ~/.dotfiles/zsh/env.zsh
-source ~/.dotfiles/zsh/aliases.zsh
-source ~/.dotfiles/zsh/keymap.zsh
-source ~/.dotfiles/zsh/fzf.zsh
 
-#
-# History
-#
-
-# Remove older command from the history if a duplicate is to be added.
-setopt HIST_IGNORE_ALL_DUPS
-
-#
-# Input/output
-#
-
-# Set editor default keymap to emacs (`-e`) or vi (`-v`)
-bindkey -e
-
-# Prompt for spelling correction of commands.
-#setopt CORRECT
-
-# Customize spelling correction prompt.
-#SPROMPT='zsh: correct %F{red}%R%f to %F{green}%r%f [nyae]? '
-
-# Remove path separator from WORDCHARS.
-WORDCHARS=${WORDCHARS//[\/]}
-
+# Apply sensisble zsh settings
+source ~/.dotfiles/zsh/zshopt
 
 # --------------------
 # Module configuration
 # --------------------
-
-#
-# completion
-#
-
-# Set a custom path for the completion dump file.
-# If none is provided, the default ${ZDOTDIR:-${HOME}}/.zcompdump is used.
-#zstyle ':zim:completion' dumpfile "${ZDOTDIR:-${HOME}}/.zcompdump-${ZSH_VERSION}"
-
-#
-# git
-#
-
-# Set a custom prefix for the generated aliases. The default prefix is 'G'.
-#zstyle ':zim:git' aliases-prefix 'g'
-
-#
-# input
-#
-
-# Append `../` to your input for each `.` you type after an initial `..`
-#zstyle ':zim:input' double-dot-expand yes
-
-#
-# termtitle
-#
-
-# Set a custom terminal title format using prompt expansion escape sequences.
-# See http://zsh.sourceforge.net/Doc/Release/Prompt-Expansion.html#Simple-Prompt-Escapes
-# If none is provided, the default '%n@%m: %~' is used.
-#zstyle ':zim:termtitle' format '%1~'
-
-#
-# zsh-autosuggestions
-#
-
-# Customize the style that the suggestions are shown with.
-# See https://github.com/zsh-users/zsh-autosuggestions/blob/master/README.md#suggestion-highlight-style
-#ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=10'
-
-#
-# zsh-syntax-highlighting
-#
-
-# Set what highlighters will be used.
-# See https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/docs/highlighters.md
-ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
-
-# Customize the main highlighter styles.
-# See https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/docs/highlighters/main.md#how-to-tweak-it
-#typeset -A ZSH_HIGHLIGHT_STYLES
-#ZSH_HIGHLIGHT_STYLES[comment]='fg=10'
 
 # ------------------
 # Initialize modules
@@ -101,16 +55,63 @@ if [[ ! ${ZIM_HOME}/init.zsh -nt ${ZDOTDIR:-${HOME}}/.zimrc ]]; then
 fi
 source ${ZIM_HOME}/init.zsh
 
-autopair-init
-source ~/.zim/modules/fzf-tab/fzf-tab.plugin.zsh
-
 # ------------------------------
 # Post-init module configuration
 # ------------------------------
 
-#
-# zsh-history-substring-search
-#
+# Set the default umask
+umask 022
+
+# Set editor default keymap to emacs (`-e`) or vi (`-v`)
+bindkey -e
+
+# Bind C+Space to accept the current suggestion
+# bindkey '^ ' autosuggest-accept
+
+# Load aliases
+source ~/.dotfiles/zsh/aliases.zsh
+
+# Load any extra settings
+test -f ~/.dotfiles/zsh/extras && source ~/dotfiles/zsh/extras
+
+# Set a custom path for the completion dump file.
+# If none is provided, the default ${ZDOTDIR:-${HOME}}/.zcompdump is used.
+#zstyle ':zim:completion' dumpfile "${ZDOTDIR:-${HOME}}/.zcompdump-${ZSH_VERSION}"
+
+# Only display targets tag for make command completion
+zstyle ':completion:*:*:make::' tag-order 'targets variables'
+
+# Reload the completions (uncomment if zsh-completions don't work)
+# autoload -U compinit && compinit
+
+# Add skaffold autocompletions
+# if [ $commands[skaffold] ]; then
+    # source <(skaffold completion zsh)
+# fi
+
+# Set a custom prefix for the generated aliases. The default prefix is 'G'.
+#zstyle ':zim:git' aliases-prefix 'g'
+
+# Append `../` to your input for each `.` you type after an initial `..`
+#zstyle ':zim:input' double-dot-expand yes
+
+# Set a custom terminal title format using prompt expansion escape sequences.
+# See http://zsh.sourceforge.net/Doc/Release/Prompt-Expansion.html#Simple-Prompt-Escapes
+# If none is provided, the default '%n@%m: %~' is used.
+#zstyle ':zim:termtitle' format '%1~'
+
+# Customize the style that the suggestions are shown with.
+# See https://github.com/zsh-users/zsh-autosuggestions/blob/master/README.md#suggestion-highlight-style
+#ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=10'
+
+# Set what highlighters will be used.
+# See https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/docs/highlighters.md
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
+
+# Customize the main highlighter styles.
+# See https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/docs/highlighters/main.md#how-to-tweak-it
+#typeset -A ZSH_HIGHLIGHT_STYLES
+#ZSH_HIGHLIGHT_STYLES[comment]='fg=10'
 
 # Bind ^[[A/^[[B manually so up/down works both before and after zle-line-init
 bindkey '^[[A' history-substring-search-up
@@ -127,4 +128,25 @@ fi
 # bindkey '^N' history-substring-search-down
 bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
-# }}} End configuration added by Zim install
+
+source ~/.dotfiles/zsh/fzf.zsh
+
+# fzf-tab settings
+local extract="
+# trim input(what you select)
+local in=\${\${\"\$(<{f})\"%\$'\0'*}#*\$'\0'}
+# get ctxt for current completion(some thing before or after the current word)
+local -A ctxt=(\"\${(@ps:\2:)CTXT}\")
+# real path
+local realpath=\${ctxt[IPREFIX]}\${ctxt[hpre]}\$in
+realpath=\${(Qe)~realpath}
+"
+
+# The preview command used by fzf-tab (show file or directory contents on completion)
+zstyle ':fzf-tab:complete:*:*' extra-opts --preview=$extract'(bat --color=always --pager=never ${realpath} || colorls --color=always --long -A --sort-dirs --git-status ${realpath}) 2>/dev/null'
+
+# Whether to automatically insert a space after the result.
+zstyle ':fzf-tab:*' insert-space false
+
+source ~/.dotfiles/zsh/keymap.zsh
+

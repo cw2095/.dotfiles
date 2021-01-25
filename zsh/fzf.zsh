@@ -1,8 +1,9 @@
-export FZF_DEFAULT_COMMAND='fd --hidden --follow -E ".git" -E "node_modules" . /etc /home'
-export fzf_preview_cmd='[[ $(file --mime {}) =~ binary ]] && echo {} is a binary file || (ccat --color=always {} || highlight -O ansi -l {} || cat {}) 2> /dev/null | head -500'
-# export FZF_DEFAULT_OPTS='--height 90% --layout=reverse --bind=alt-j:down,alt-k:up,alt-i:toggle+down --border --preview "echo {} | ~/.dotfiles/bin/fzf_preview.py" --preview-window=down'
-export FZF_DEFAULT_OPTS='--bind=alt-j:down,alt-k:up,alt-i:toggle+down --preview "echo {} | ~/.dotfiles/bin/preview.sh" '
+export FZF_DEFAULT_COMMAND='fd --hidden --follow -E ".git" -E "node_modules" . '
+# export FZF_DEFAULT_OPTS="--bind 'ctrl-v:execute(nvim {})+abort,ctrl-p:toggle-preview,alt-a:select-all,alt-d:deselect-all' --layout=reverse --tiebreak=index --cycle --preview-window noborder"
+export FZF_DEFAULT_OPTS="--bind 'ctrl-p:toggle-preview,alt-a:select-all,alt-d:deselect-all' --layout=reverse --tiebreak=index --cycle --preview-window noborder"
+export FZF_DEFAULT_OPTS="${FZF_DEFAULT_OPTS} --color=dark,fg:7,bg:-1,hl:5,fg+:15,bg+:8,hl+:13,info:2,prompt:4,pointer:1,marker:3,spinner:4,header:4"
 export FZF_COMPLETION_TRIGGER='\'
+
 export FZF_TMUX=1
 export FZF_TMUX_HEIGHT='80%'
 
@@ -11,12 +12,12 @@ export FZF_TMUX_HEIGHT='80%'
 # - The first argument to the function ($1) is the base path to start traversal
 # - See the source code (completion.{bash,zsh}) for the details.
 _fzf_compgen_path() {
-  fd --hidden --follow -E ".git" -E "node_modules" . "$1" /etc /home
+  fd --hidden --follow -E ".git" -E "node_modules" . "$1"
 }
 
 # Use fd to generate the list for directory completion
 _fzf_compgen_dir() {
-  fd --type d --hidden --follow -E ".git" -E "node_modules" . "$1" /etc /home
+  fd --type d --hidden --follow -E ".git" -E "node_modules" . "$1"
 }
 
 _fzf_fpath=${0:h}/fzf
@@ -34,7 +35,7 @@ fzf-redraw-prompt() {
 zle -N fzf-redraw-prompt
 
 zle -N fzf-find-widget
-bindkey '^p' fzf-find-widget
+bindkey '^f' fzf-find-widget
 
 fzf-cd-widget() {
     local tokens=(${(z)LBUFFER})
@@ -62,15 +63,16 @@ fzf-history-widget() {
     return $ret
 }
 zle -N fzf-history-widget
-bindkey '^R' fzf-history-widget
+bindkey '^h' fzf-history-widget
 
 fif() {
-    if [ ! "$#" -gt 0 ]; then echo "Need a string to search for!"; return 1; fi
-    rg --files-with-matches --no-messages "$1" | fzf --preview "highlight -O ansi -l {} 2> /dev/null | rg --colors 'match:bg:yellow' --ignore-case --pretty --context 10 '$1' || rg --ignore-case --pretty --context 10 '$1' {}"
+  if [ ! "$#" -gt 0 ]; then echo "Need a string to search for!"; return 1; fi
+  rg --files-with-matches --no-messages "$1" | fzf --preview "highlight -O ansi -l {} 2> /dev/null | rg --colors 'match:bg:yellow' --ignore-case --pretty --context 10 '$1' || rg --ignore-case --pretty --context 10 '$1' {}"
 }
 
 find-in-file() {
     grep --line-buffered --color=never -r "" * | fzf
 }
 zle -N find-in-file
-bindkey '^f' find-in-file
+bindkey '^s' find-in-file
+

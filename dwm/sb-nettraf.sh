@@ -2,7 +2,7 @@
 
 case $BLOCK_BUTTON in
     3) notify-send "🌐 网络流量模块" "\- 查看实时网络流量
--⬇️ : 下行流量
+-⬇ : 下行流量
 -⬆ : 上行流量" ;;
     6) "$TERMINAL" -e "$EDITOR" "$0" ;;
 esac
