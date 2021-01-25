@@ -1,7 +1,7 @@
 export FZF_DEFAULT_COMMAND='fd --hidden --follow -E ".git" -E "node_modules" . /etc /home'
 export fzf_preview_cmd='[[ $(file --mime {}) =~ binary ]] && echo {} is a binary file || (ccat --color=always {} || highlight -O ansi -l {} || cat {}) 2> /dev/null | head -500'
 # export FZF_DEFAULT_OPTS='--height 90% --layout=reverse --bind=alt-j:down,alt-k:up,alt-i:toggle+down --border --preview "echo {} | ~/.dotfiles/bin/fzf_preview.py" --preview-window=down'
-export FZF_DEFAULT_OPTS='--bind=alt-j:down,alt-k:up,alt-i:toggle+down --preview "echo {} | ~/.dotfiles/bin/fzf_preview.py" '
+export FZF_DEFAULT_OPTS='--bind=alt-j:down,alt-k:up,alt-i:toggle+down --preview "echo {} | ~/.dotfiles/bin/preview.sh" '
 export FZF_COMPLETION_TRIGGER='\'
 export FZF_TMUX=1
 export FZF_TMUX_HEIGHT='80%'
