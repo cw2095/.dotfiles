@@ -126,8 +126,14 @@ fi
 
 # bindkey '^P' history-substring-search-up
 # bindkey '^N' history-substring-search-down
-bindkey -M vicmd 'k' history-substring-search-up
-bindkey -M vicmd 'j' history-substring-search-down
+# bindkey -M vicmd 'k' history-substring-search-up
+# bindkey -M vicmd 'j' history-substring-search-down
+
+# pip3 install thefuck
+# pip3 install thefuck --upgrade
+# corrects errors in previous console commands
+eval $(thefuck --alias)
+eval $(thefuck --alias fk)
 
 source ~/.dotfiles/zsh/fzf.zsh
 
