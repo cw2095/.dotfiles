@@ -14,6 +14,8 @@
     ~/.gitconfig: gitconfig
     ~/.gitignore_global: gitignore_global
     ~/.config/alacritty/alacritty.yml: alacritty.yml
+    ~/.config/pip/pip.conf: pip.conf
+    ~/.npmrc: npmrc
     ~/.config/dunst/dunstrc: dunstrc
     ~/GitHub/dwmblocks/config.h: dwm/dwmblocks_config.h
     ~/.config/nvim: ~/GitHub/vime

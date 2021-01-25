@@ -1,11 +1,36 @@
-# Start configuration added by Zim install {{{
-#
-# User configuration sourced by all invocations of the shell
-#
-
 # Define Zim location
 : ${ZIM_HOME=${ZDOTDIR:-${HOME}}/.zim}
-# }}} End configuration added by Zim install
 
+export TERM=xterm-256color
+export TERM_ITALICS=true
+
+export ZSH_AUTOSUGGEST_USE_ASYNC=1
+export ZSH_AUTOSUGGEST_MANUAL_REBIND=1
+
+# Make Vi mode transitions faster (KEYTIMEOUT is in hundredths of a second)
+export KEYTIMEOUT=1
+
+if [ $commands[bat] ]; then
+    export BAT_CONFIG_PATH=$HOME/.dotfiles/bat_config
+fi
+
+export XDG_CONFIG_HOME=$HOME/.config
+export XDG_CACHE_HOME=$HOME/.cache
+export XDG_DATA_HOME=$HOME/.local/share
+
+# Golang
+export GOPATH="${HOME}/go"
+if [[ ! "$PATH" == */usr/local/go/bin* ]]; then
+    export PATH="${PATH}:/usr/local/go/bin:${GOPATH}/bin"
+fi
+
+# Node Version Manager
+export NVM_DIR="${HOME}/.nvm"
+
+# Ruby Version Manager
+export RVM_DIR="${HOME}/.rvm"
+test -f "${RVM_DIR}/scripts/rvm" && source "${RVM_DIR}/scripts/rvm"
+
+export LOCALBIN=$HOME/.dotfiles/bin
+export PATH=$PATH:$LOCALBIN
 export PATH=$PATH:/home/cw/.local/bin
-export PATH=$PATH:/home/cw/go/bin
