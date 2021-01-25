@@ -10,6 +10,10 @@ export ZSH_AUTOSUGGEST_MANUAL_REBIND=1
 # Make Vi mode transitions faster (KEYTIMEOUT is in hundredths of a second)
 export KEYTIMEOUT=1
 
+if [ $commands[bat] ]; then
+    export BAT_CONFIG_PATH=$HOME/.dotfiles/bat_config
+fi
+
 export XDG_CONFIG_HOME=$HOME/.config
 export XDG_CACHE_HOME=$HOME/.cache
 export XDG_DATA_HOME=$HOME/.local/share
