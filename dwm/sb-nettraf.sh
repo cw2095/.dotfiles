@@ -46,4 +46,4 @@ else
     TX=$(echo $TX | awk '{print $1/1024 "KB/s"}')
 fi
 
-printf ("⬆:%2.2d ⬇:%2.2d", $TX, $RX)
+echo "⬆:$TX ⬇:$RX"
