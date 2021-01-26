@@ -17,5 +17,6 @@
     ~/.config/pip/pip.conf: pip.conf
     ~/.npmrc: npmrc
     ~/.config/dunst/dunstrc: dunstrc
+    ~/.config/rofi/config.rasi: rofi.config.rasi
     ~/GitHub/dwmblocks/config.h: dwm/dwmblocks_config.h
     ~/.config/nvim: ~/GitHub/vime
