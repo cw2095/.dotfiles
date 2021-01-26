@@ -1,7 +1,7 @@
 configuration {
     modi: "window,drun,run,ssh";
     show-icons: true;
-    icon-theme: "default";
+    icon-theme: "Papirus-Dark";
     matching: "fuzzy";
     threads: 16;
     case-sensitive: false;
@@ -14,7 +14,7 @@ configuration {
     /* matching-negate-char: '-' [> unsupported <]; */
     width: 60;
     lines: 20;
-    columns: 2;
+    columns: 1;
     font: "SauceCodePro Nerd Font 12";
     bw: 2;
     location: 1;
