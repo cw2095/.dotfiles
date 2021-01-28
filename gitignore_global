@@ -28,6 +28,12 @@
 # !/fw/sf/
 # 不忽略根目录下的 /fw/bin/ 和 /fw/sf/ 目录
 #
+# .idea/          # 忽略仓库中所有.idea 目录
+# /.idea/         # 忽略仓库中根目录下的.idea 目录
+# /.settings      # 忽略仓库中根目录下的 .settings 文件或目录
+# ~'$'*.docx      # office 打开时生成的临时文件
+# !etc/eclipse/.checkstyle    # 不忽略 .checkstyle 文件或目录
+#
 # 命令和注释别在同一行，如*.txt #注释txt这样会导致这一行无法被识别
 # git add .之前如果有改动.gitignore一定要执行 git rm -r --cached .
 
