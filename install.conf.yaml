@@ -18,6 +18,7 @@
     ~/.npmrc: npmrc
     ~/.config/dunst/dunstrc: dunstrc
     ~/.config/rofi/config.rasi: rofi.config.rasi
+    ~/.config/redshift/redshift.conf: redshift.conf
     ~/.xinitrc: xinitrc
     ~/.xprofile: xprofile
     ~/GitHub/dwmblocks/config.h: dwm/dwmblocks_config.h
