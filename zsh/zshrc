@@ -156,3 +156,4 @@ zstyle ':fzf-tab:*' insert-space false
 
 source ~/.dotfiles/zsh/keymap.zsh
 
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
