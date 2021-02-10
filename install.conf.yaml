@@ -20,6 +20,7 @@
     ~/.config/rofi/config.rasi: rofi.config.rasi
     ~/.config/redshift/redshift.conf: redshift.conf
     ~/.config/aria2/aria2.conf: aria2.conf
+    ~/.config/zathura/zathurarc: zathurarc
     ~/.xinitrc: xinitrc
     ~/.xprofile: xprofile
     ~/GitHub/dwmblocks/config.h: dwm/dwmblocks_config.h
