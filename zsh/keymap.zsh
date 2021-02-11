@@ -10,3 +10,7 @@ function openlazygit {
 
 zle -N openlazygit; bindkey "^G" openlazygit
 
+bindkey -r '^P'
+bindkey -r '^O'
+bindkey '^n' zfm-cd-to-bookmark
+bindkey '^b' zfm-insert-bookmark
