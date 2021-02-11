@@ -64,6 +64,7 @@ umask 022
 
 # Set editor default keymap to emacs (`-e`) or vi (`-v`)
 bindkey -e
+bindkey '^v' edit-command-line
 
 # Bind C+Space to accept the current suggestion
 bindkey '^ ' autosuggest-accept
@@ -135,6 +136,7 @@ fi
 # eval $(thefuck --alias)
 # eval $(thefuck --alias fk)
 
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 source ~/.dotfiles/zsh/fzf.zsh
 
 # fzf-tab settings
@@ -153,7 +155,7 @@ zstyle ':fzf-tab:complete:*:*' extra-opts --preview=$extract'(bat --color=always
 
 # Whether to automatically insert a space after the result.
 zstyle ':fzf-tab:*' insert-space false
+enable-fzf-tab
 
 source ~/.dotfiles/zsh/keymap.zsh
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
