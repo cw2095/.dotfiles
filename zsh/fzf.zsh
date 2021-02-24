@@ -12,12 +12,12 @@ export FZF_TMUX_HEIGHT='80%'
 # - The first argument to the function ($1) is the base path to start traversal
 # - See the source code (completion.{bash,zsh}) for the details.
 _fzf_compgen_path() {
-  fd --hidden --follow -E ".git" -E "node_modules" . "$1"
+  fd --hidden --follow -E ".git" -E "node_modules" -E "~/GitHub" . "$1"
 }
 
 # Use fd to generate the list for directory completion
 _fzf_compgen_dir() {
-  fd --type d --hidden --follow -E ".git" -E "node_modules" . "$1"
+  fd --type d --hidden --follow -E ".git" -E "node_modules" -E "~/GitHub" . "$1"
 }
 
 _fzf_fpath=${0:h}/fzf
