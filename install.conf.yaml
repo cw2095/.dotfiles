@@ -25,3 +25,4 @@
     ~/.xprofile: xprofile
     ~/GitHub/dwmblocks/config.h: dwm/dwmblocks_config.h
     ~/.config/nvim: ~/GitHub/vime
+    ~/.globalrc: /usr/local/share/gtags/gtags.conf
