@@ -50,6 +50,12 @@
 *.orig
 *.ORIG
 
+compile_commands.json
+compile_flags.txt
+tags
+GPATH
+GRTAGS
+GTAGS
 .ccls-cache/
 
 # Editing tools and IDEs #
