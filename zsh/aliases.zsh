@@ -3,6 +3,8 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 alias .....='cd ../../../..'
 
+alias task='asynctask -f'
+
 alias ls='ls --group-directories-first --color=auto'
 alias ll='ls -alh'
 alias l='ll -A'
