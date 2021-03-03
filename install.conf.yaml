@@ -6,11 +6,12 @@
 - clean: ['~', '~/.config']
 
 - link:
-    ~/.zshenv: zsh/zshenv
-    ~/.zshrc: zsh/zshrc
-    ~/.zlogin: zsh/zlogin
-    ~/.zimrc: zsh/zimrc
-    ~/.zim/zimfw.zsh: zim/zimfw.zsh
+    ~/.local/zsh/.zshenv: zsh/zshenv
+    ~/.local/zsh/.zprofile: zsh/zprofile
+    ~/.local/zsh/.zshrc: zsh/zshrc
+    ~/.local/zsh/.zlogin: zsh/zlogin
+    ~/.local/zsh/.zlogout: zsh/zlogout
+    ~/.local/zsh/.zimrc: zsh/zimrc
     ~/.gitconfig: gitconfig
     ~/.gitignore_global: gitignore_global
     ~/.config/alacritty/alacritty.yml: alacritty.yml
@@ -23,7 +24,7 @@
     ~/.config/zathura/zathurarc: zathurarc
     ~/.xinitrc: xinitrc
     ~/.xprofile: xprofile
-    ~/GitHub/dwmblocks/config.h: dwm/dwmblocks_config.h
+    # ~/GitHub/dwmblocks/config.h: dwm/dwmblocks_config.h
     ~/.config/nvim: ~/GitHub/vime
     ~/.globalrc: /usr/local/share/gtags/gtags.conf
     ~/bin/asynctask: ~/.cache/vim/plugins/asynctasks.vim/bin/asynctask

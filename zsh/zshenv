@@ -1,8 +1,26 @@
+[[ -z "$ZSH_VERSION" ]] && return
+
 # Define Zim location
 : ${ZIM_HOME=${ZDOTDIR:-${HOME}}/.zim}
 
 export TERM=xterm-256color
 export TERM_ITALICS=true
+
+export EDITOR='nvim'
+export VISUAL='nvim'
+
+export GCC_COLORS=1
+
+export EXECIGNORE="*.dll"
+
+if [ $commands[bat] ]; then
+    export BAT_CONFIG_PATH=$HOME/.dotfiles/bat_config
+    export PAGER='bat'
+fi
+
+export XDG_CONFIG_HOME=$HOME/.config
+export XDG_CACHE_HOME=$HOME/.cache
+export XDG_DATA_HOME=$HOME/.local/share
 
 export ZSH_AUTOSUGGEST_USE_ASYNC=1
 export ZSH_AUTOSUGGEST_MANUAL_REBIND=1
@@ -10,33 +28,85 @@ export ZSH_AUTOSUGGEST_MANUAL_REBIND=1
 # Make Vi mode transitions faster (KEYTIMEOUT is in hundredths of a second)
 export KEYTIMEOUT=1
 
-if [ $commands[bat] ]; then
-    export BAT_CONFIG_PATH=$HOME/.dotfiles/bat_config
+#----------------------------------------------------------------------
+# detect nvim folder
+#----------------------------------------------------------------------
+if [ -n "$NVIM_CONFIG" ]; then
+    [ ! -d "$NVIM_CONFIG/config" ] && VIM_CONFIG=""
 fi
 
-export XDG_CONFIG_HOME=$HOME/.config
-export XDG_CACHE_HOME=$HOME/.cache
-export XDG_DATA_HOME=$HOME/.local/share
+[ -z "$NVIM_CONFIG" ] && NVIM_CONFIG="$HOME/.config/nvim"
+
+export NVIM_CONFIG
 
 # Golang
-export GOPATH="${HOME}/go"
-if [[ ! "$PATH" == */usr/local/go/bin* ]]; then
-    export PATH="${PATH}:/usr/local/go/bin:${GOPATH}/bin"
+# setup for go if it exists
+if [ -d "$HOME/.local/go" ]; then
+    export GOPATH="$HOME/.local/go"
+    if [ -d "$HOME/.local/go/bin" ]; then
+        export PATH="$HOME/.local/go/bin:$PATH"
+    fi
 fi
+
+# setup for alternative go path
+if [ -d "$HOME/go" ]; then
+    export GOPATH="$HOME/go"
+    if [ -d "$HOME/go/bin" ]; then
+        export PATH="$HOME/go/bin:$PATH"
+    fi
+fi
+
+# setup for /usr/local/app/bin if it exists
+if [ -d /usr/local/app/bin ]; then
+    export PATH="/usr/local/app/bin:$PATH"
+fi
+
+# setup for go if it exists
+if [ -d /usr/local/app/go ]; then
+    export GOROOT="/usr/local/app/go"
+    export PATH="/usr/local/app/go/bin:$PATH"
+fi
+
+if [[ -d /usr/local/go/bin ]]; then
+    export PATH="${PATH}:/usr/local/go/bin"
+fi
+
 
 # Node Version Manager
 export NVM_DIR="${HOME}/.nvm"
+
+# setup for nodejs
+if [ -d /usr/local/app/node ]; then
+    export PATH="/usr/local/app/node/bin:$PATH"
+fi
 
 # Ruby Version Manager
 export RVM_DIR="${HOME}/.rvm"
 test -f "${RVM_DIR}/scripts/rvm" && source "${RVM_DIR}/scripts/rvm"
 
+# setup for local rust
+if [ -d "$HOME/.cargo/bin" ]; then
+    export PATH="$HOME/.cargo/bin:$PATH"
+fi
+
 # pip3
 # export PATH=$PATH:$HOME/.local/lib/python3.9/site-packages
 # export PATH=$PATH:$HOME/.local/bin
 
-export LOCALBIN=$HOME/.dotfiles/bin
-export PATH=$PATH:$LOCALBIN
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/.local/bin" ]; then
+    export PATH="$HOME/.local/bin:$PATH"
+fi
+
+# setup for own dotfiles
+if [ -d "$HOME/.dotfiles/bin" ]; then
+    export PATH="$HOME/.dotfiles/bin:$PATH"
+fi
+
+# setup for ~/bin
+if [ -d "$HOME/bin" ]; then
+    export PATH="$HOME/bin:$PATH"
+fi
 
 # remove duplicate path
 if [ -n "$PATH" ]; then

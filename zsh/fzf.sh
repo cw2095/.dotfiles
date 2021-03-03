@@ -20,59 +20,29 @@ _fzf_compgen_dir() {
   fd --type d --hidden --follow -E ".git" -E "node_modules" -E "~/GitHub" . "$1"
 }
 
+if [[ -n "$ZSH_VERSION" ]]; then
+
 _fzf_fpath=${0:h}/fzf
 fpath+=$_fzf_fpath
 autoload -U $_fzf_fpath/*(.:t)
 unset _fzf_fpath
 
-fzf-redraw-prompt() {
-    local precmd
-    for precmd in $precmd_functions; do
-        $precmd
-    done
-    zle reset-prompt
-}
-zle -N fzf-redraw-prompt
+# fzf-tab settings
+local extract="
+# trim input(what you select)
+local in=\${\${\"\$(<{f})\"%\$'\0'*}#*\$'\0'}
+# get ctxt for current completion(some thing before or after the current word)
+local -A ctxt=(\"\${(@ps:\2:)CTXT}\")
+# real path
+local realpath=\${ctxt[IPREFIX]}\${ctxt[hpre]}\$in
+realpath=\${(Qe)~realpath}
+"
 
-zle -N fzf-find-widget
-bindkey '^f' fzf-find-widget
+# The preview command used by fzf-tab (show file or directory contents on completion)
+zstyle ':fzf-tab:complete:*:*' extra-opts --preview=$extract'(bat --color=always --pager=never ${realpath} || colorls --color=always --long -A --sort-dirs --git-status ${realpath}) 2>/dev/null'
 
-fzf-cd-widget() {
-    local tokens=(${(z)LBUFFER})
-    if (( $#tokens <= 1 )); then
-        zle fzf-find-widget 'only_dir'
-        if [[ -d $LBUFFER ]]; then
-            cd $LBUFFER
-            local ret=$?
-            LBUFFER=
-            zle fzf-redraw-prompt
-            return $ret
-        fi
-    fi
-}
-zle -N fzf-cd-widget
-bindkey '^t' fzf-cd-widget
+# Whether to automatically insert a space after the result.
+zstyle ':fzf-tab:*' insert-space false
+enable-fzf-tab
 
-fzf-history-widget() {
-    local num=$(fhistory $LBUFFER)
-    local ret=$?
-    if [[ -n $num ]]; then
-        zle vi-fetch-history -n $num
-    fi
-    zle reset-prompt
-    return $ret
-}
-zle -N fzf-history-widget
-bindkey '^h' fzf-history-widget
-
-fif() {
-  if [ ! "$#" -gt 0 ]; then echo "Need a string to search for!"; return 1; fi
-  rg --files-with-matches --no-messages "$1" | fzf --preview "highlight -O ansi -l {} 2> /dev/null | rg --colors 'match:bg:yellow' --ignore-case --pretty --context 10 '$1' || rg --ignore-case --pretty --context 10 '$1' {}"
-}
-
-find-in-file() {
-    grep --line-buffered --color=never -r "" * | fzf
-}
-zle -N find-in-file
-bindkey '^s' find-in-file
-
+fi

@@ -1,3 +1,5 @@
+[[ -z "$ZSH_VERSION" ]] && return
+
 # Start configuration added by Zim install {{{
 #
 # User configuration sourced by login shells

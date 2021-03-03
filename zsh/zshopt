@@ -1,3 +1,5 @@
+[[ -z "$ZSH_VERSION" ]] && return
+
 setopt HIST_IGNORE_ALL_DUPS    # Remove older command from the history if a duplicate is to be added.
 setopt ALWAYS_TO_END           # full completions move cursor to the end
 setopt AUTO_CD                 # `dirname` is equivalent to `cd dirname`
@@ -26,3 +28,6 @@ DISABLE_MAGIC_FUNCTIONS=true
 
 # Remove path separator from WORDCHARS.
 WORDCHARS=${WORDCHARS//[\/]}
+
+[[ -z "$HISTSIZE" ]] && HISTSIZE=5000
+[[ -z "$HISTFILESIZE" ]] && HISTFILESIZE=10000
