@@ -13,6 +13,7 @@
     ~/.local/zsh/.zlogout: zsh/zlogout
     ~/.local/zsh/.zimrc: zsh/zimrc
     ~/.gitconfig: gitconfig
+    ~/.tmux.conf: tmux.conf
     ~/.gitignore_global: gitignore_global
     ~/.config/alacritty/alacritty.yml: alacritty.yml
     ~/.config/pip/pip.conf: pip.conf
