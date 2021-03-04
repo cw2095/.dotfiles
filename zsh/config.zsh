@@ -68,6 +68,14 @@ zstyle ':completion:*:*:make::' tag-order 'targets variables'
 
 zmodload -F zsh/terminfo +p:terminfo
 
+# setup for deer
+autoload -U deer
+zle -N deer
+
+# completion detail
+zstyle ':completion:*:complete:-command-:*:*' ignored-patterns '*.pdf|*.exe|*.dll'
+zstyle ':completion:*:*sh:*:' tag-order files
+
 # pip3 install thefuck
 # pip3 install thefuck --upgrade
 # corrects errors in previous console commands

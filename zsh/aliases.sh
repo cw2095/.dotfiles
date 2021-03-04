@@ -5,6 +5,8 @@ alias .....='cd ../../../..'
 
 alias task='asynctask -f'
 
+alias d='dirs -v | head -10'
+
 alias ls='ls --group-directories-first --color=auto'
 alias ll='ls -alh'
 alias l='ll -A'
