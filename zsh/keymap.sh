@@ -48,11 +48,12 @@ bindkey '\eK' end-of-line
 # bindkey '\e[1;3B' end-of-line
 
 bindkey -s '\ee' 'vi\n'
+# bindkey -s '\eOS' 'vi '
 # bindkey '\ev' deer
 bindkey -s '\eu' 'ranger_cd\n'
 bindkey -s '\e;' 'k -AhS\n'
 bindkey -s '\eg'  'lazygit\n'
-# bindkey -s '\eOS' 'vim '
+bindkey -s '\et'  'task\n'
 
 fi
 
