@@ -28,8 +28,9 @@ set database "plain"
 # set sandbox "none"
 # zathurarc-dark
 
-set font "Courier 12"
-set default-bg "#0" #00
+set font "Courier 18"
+# set default-bg "#0" #00
+set default-bg "#151515" #00
 set default-fg "#F7F7F6" #01
 
 set statusbar-fg "#B0B0B0" #04
