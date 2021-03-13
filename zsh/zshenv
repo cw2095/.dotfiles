@@ -15,8 +15,11 @@ export EXECIGNORE="*.dll"
 
 if [ $commands[bat] ]; then
     export BAT_CONFIG_PATH=$HOME/.dotfiles/bat_config
-    export PAGER='bat'
+    # export PAGER='bat'
 fi
+
+# ranger
+export RANGER_LOAD_DEFAULT_RC=FALSE
 
 export XDG_CONFIG_HOME=$HOME/.config
 export XDG_CACHE_HOME=$HOME/.cache
