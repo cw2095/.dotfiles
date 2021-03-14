@@ -29,10 +29,12 @@
     ~/.config/nvim: ~/GitHub/vime
     ~/.globalrc: /usr/local/share/gtags/gtags.conf
     ~/bin/asynctask: ~/.cache/vim/plugins/asynctasks.vim/bin/asynctask
+    ~/.zfm.txt: zfm.txt
     ~/.config/asynctask/asynctask.ini:  asynctask/asynctask.ini
     ~/.config/asynctask/tasks.ini: asynctask/tasks.ini
-    ~/.config/ranger/rifle.conf: ranger/rifle.conf
-    ~/.config/ranger/commands.py: ranger/commands.py
-    ~/.config/ranger/commands_full.py: ranger/commands_full.py
-    ~/.config/ranger/rc.conf: ranger/rc.conf
-    ~/.config/ranger/scope.sh: ranger/scope.sh
+    ~/.config/ranger: ranger
+    # ~/.config/ranger/rifle.conf: ranger/rifle.conf
+    # ~/.config/ranger/commands.py: ranger/commands.py
+    # ~/.config/ranger/commands_full.py: ranger/commands_full.py
+    # ~/.config/ranger/rc.conf: ranger/rc.conf
+    # ~/.config/ranger/scope.sh: ranger/scope.sh
