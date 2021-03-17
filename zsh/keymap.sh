@@ -50,10 +50,11 @@ bindkey '\eK' end-of-line
 bindkey -s '\ee' 'vi\n'
 # bindkey -s '\eOS' 'vi '
 # bindkey '\ev' deer
-bindkey -s '\eu' 'ranger_cd\n'
+bindkey -s '\er' 'ranger_cd\n'
 bindkey -s '\e;' 'k -AhS\n'
 bindkey -s '\eg'  'lazygit\n'
 bindkey -s '\et'  'task\n'
+bindkey -s '\eu'  'util\n'
 
 fi
 

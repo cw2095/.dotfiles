@@ -1,6 +1,6 @@
 export FZF_DEFAULT_COMMAND='fd --hidden --follow -E ".git" -E "node_modules" . '
 # export FZF_DEFAULT_OPTS="--bind 'ctrl-v:execute(nvim {})+abort,ctrl-p:toggle-preview,alt-a:select-all,alt-d:deselect-all' --layout=reverse --tiebreak=index --cycle --preview-window noborder"
-export FZF_DEFAULT_OPTS="--bind 'ctrl-p:toggle-preview,alt-a:select-all,alt-d:deselect-all' --layout=reverse --tiebreak=index --cycle --preview-window noborder"
+export FZF_DEFAULT_OPTS="--bind 'ctrl-e:execute(nvim {})+abort,ctrl-p:toggle-preview,alt-a:select-all,alt-d:deselect-all' --layout=reverse --tiebreak=index --cycle --preview-window noborder"
 export FZF_DEFAULT_OPTS="${FZF_DEFAULT_OPTS} --color=dark,fg:7,bg:-1,hl:5,fg+:15,bg+:8,hl+:13,info:2,prompt:4,pointer:1,marker:3,spinner:4,header:4"
 export FZF_COMPLETION_TRIGGER='\'
 
