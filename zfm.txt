@@ -1,4 +1,3 @@
-/home/cw/.dotfiles
 /etc/portage/make.conf
 /home/cw/GitHub/vime
 /home/cw/.dotfiles

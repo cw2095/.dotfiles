@@ -13,23 +13,23 @@
     ~/.local/zsh/.zlogout: zsh/zlogout
     ~/.local/zsh/.zimrc: zsh/zimrc
     ~/.gitconfig: gitconfig
-    ~/.tmux.conf: tmux.conf
     ~/.gitignore_global: gitignore_global
     ~/.config/alacritty/alacritty.yml: alacritty.yml
     ~/.config/pip/pip.conf: pip.conf
-    ~/.npmrc: npmrc
     ~/.config/dunst/dunstrc: dunstrc
     ~/.config/rofi/config.rasi: rofi.config.rasi
     ~/.config/redshift/redshift.conf: redshift.conf
     ~/.config/aria2/aria2.conf: aria2.conf
     ~/.config/zathura/zathurarc: zathurarc
-    ~/.xinitrc: xinitrc
-    ~/.xprofile: xprofile
-    # ~/GitHub/dwmblocks/config.h: dwm/dwmblocks_config.h
-    ~/.config/nvim: ~/GitHub/vime
-    ~/.globalrc: /usr/local/share/gtags/gtags.conf
-    ~/bin/asynctask: ~/.cache/vim/plugins/asynctasks.vim/bin/asynctask
-    ~/.zfm.txt: zfm.txt
     ~/.config/asynctask/asynctask.ini:  asynctask/asynctask.ini
     ~/.config/asynctask/tasks.ini: asynctask/tasks.ini
     ~/.config/ranger: ranger
+    ~/.config/nvim: ~/GitHub/vime
+    ~/.tmux.conf: tmux.conf
+    ~/.npmrc: npmrc
+    ~/.xinitrc: xinitrc
+    ~/.xprofile: xprofile
+    # ~/GitHub/dwmblocks/config.h: dwm/dwmblocks_config.h
+    ~/.globalrc: /usr/share/gtags/gtags.conf
+    ~/bin/asynctask: ~/.cache/vim/plugins/asynctasks.vim/bin/asynctask
+    ~/.zfm.txt: zfm.txt
