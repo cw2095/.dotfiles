@@ -106,6 +106,13 @@ if [ -d "$HOME/bin" ]; then
     export PATH="$HOME/bin:$PATH"
 fi
 
+# cross compile
+if [ -d "$HOME/Documents/100ask_stm32mp157_pro-sdk/ToolChain/arm-buildroot-linux-gnueabihf_sdk-buildroot/bin" ]; then
+    export ARCH=arm
+    export CROSS_COMPILE=arm-buildroot-linux-gnueabihf-
+    export PATH="/home/cw/Documents/100ask_stm32mp157_pro-sdk/ToolChain/arm-buildroot-linux-gnueabihf_sdk-buildroot/bin:$PATH"
+fi
+
 # remove duplicate path
 if [ -n "$PATH" ]; then
     old_PATH=$PATH:; PATH=
